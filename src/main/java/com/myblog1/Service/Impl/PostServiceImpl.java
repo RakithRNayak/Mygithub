@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
     public PostResponse getAllPosts(int pageNo,int pageSize, String sortBy, String sortDir) {
        Sort sort= sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(sortBy).ascending()
-                :Sort.by(sortBy).ascending();
+                :Sort.by(sortBy).descending();
 
         PageRequest pageable = PageRequest.of(pageNo, pageSize, sort);
         Page<Post> content = postRepo.findAll(pageable);
